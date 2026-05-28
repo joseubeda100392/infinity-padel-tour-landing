@@ -26,7 +26,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans:    ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-bebas)', 'Impact', 'sans-serif'],
+        condensed: ['var(--font-barlow)', 'var(--font-inter)', 'sans-serif'],
       },
       keyframes: {
         'fade-up': {

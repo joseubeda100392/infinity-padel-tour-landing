@@ -24,7 +24,7 @@ export function Marquee({ className }: { className?: string }) {
         {repeated.map((item, i) => (
           <span
             key={i}
-            className="mx-6 inline-flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.25em] text-gray-600 whitespace-nowrap"
+            className="mx-8 inline-flex items-center gap-8 font-display text-lg uppercase tracking-widest text-gray-700 whitespace-nowrap"
           >
             {item}
             <span className="h-1 w-1 rounded-full bg-brand-500/60" />

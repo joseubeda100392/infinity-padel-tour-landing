@@ -63,7 +63,10 @@ export function RegisterForm() {
         {/* Header */}
         <RevealOnScroll className="mb-10 text-center">
           <LokBadge className="mb-6" />
-          <h2 className="text-3xl font-black tracking-[-0.025em] text-white sm:text-4xl lg:text-5xl">
+          <h2
+            className="font-display uppercase leading-[0.9] tracking-wide text-white"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
+          >
             {reg.headline}
           </h2>
           <p

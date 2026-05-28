@@ -24,13 +24,16 @@ export function Teaser() {
 
         {/* Header */}
         <RevealOnScroll className="mb-16 text-center">
-          <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.25em] text-brand-500">
+          <p className="mb-4 font-condensed text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">
             {teaser.eyebrow}
           </p>
-          <h2 className="whitespace-pre-line text-3xl font-black leading-[1.08] tracking-[-0.025em] text-white sm:text-4xl lg:text-5xl">
+          <h2
+            className="font-display uppercase leading-[0.9] tracking-wide text-white"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)' }}
+          >
             {teaser.headline}
           </h2>
-          <p className="mt-5 text-sm text-gray-600 sm:text-base">{teaser.subheadline}</p>
+          <p className="mt-5 font-condensed text-sm uppercase tracking-[0.1em] text-gray-600 sm:text-base">{teaser.subheadline}</p>
         </RevealOnScroll>
 
         {/* Pillars */}
