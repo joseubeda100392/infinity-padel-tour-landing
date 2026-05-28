@@ -1,12 +1,20 @@
 import type { Metadata } from 'next'
-import { Inter, Bebas_Neue, Barlow_Condensed } from 'next/font/google'
+import { Ubuntu, Ubuntu_Condensed, Bebas_Neue } from 'next/font/google'
 import { Toaster } from 'sonner'
 import './globals.css'
 import { landing } from '@/content/landing'
 
-const inter = Inter({
+const ubuntu = Ubuntu({
+  weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-ubuntu',
+  display: 'swap',
+})
+
+const ubuntuCondensed = Ubuntu_Condensed({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-ubuntu-condensed',
   display: 'swap',
 })
 
@@ -14,13 +22,6 @@ const bebasNeue = Bebas_Neue({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-bebas',
-  display: 'swap',
-})
-
-const barlowCondensed = Barlow_Condensed({
-  weight: ['400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-  variable: '--font-barlow',
   display: 'swap',
 })
 
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} ${bebasNeue.variable} ${barlowCondensed.variable}`}>
+    <html lang="es" className={`${ubuntu.variable} ${ubuntuCondensed.variable} ${bebasNeue.variable}`}>
       <body>
         {children}
         <Toaster
@@ -51,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           toastOptions={{
             style: {
               background: '#0D1117',
-              border: '1px solid #F5501E40',
+              border: '1px solid #a7fd7e40',
               color: '#fff',
             },
           }}
