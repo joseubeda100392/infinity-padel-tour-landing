@@ -7,67 +7,44 @@ interface LokLogoProps {
   showLabel?: boolean
 }
 
-export function LokLogo({ height = 28, variant = 'orange', className, showLabel = true }: LokLogoProps) {
-  const color =
+const ASPECT = 635.64 / 267.26
+
+export function LokLogo({ height = 28, variant = 'white', className }: LokLogoProps) {
+  const letterColor =
     variant === 'orange' ? '#F5501E' :
-    variant === 'white'  ? '#FFFFFF' : '#000000'
+    variant === 'white'  ? '#FFFFFF' : '#1b1b1b'
+
+  const width = Math.round(height * ASPECT)
 
   return (
     <svg
+      width={width}
       height={height}
-      viewBox="0 0 110 32"
-      fill="none"
+      viewBox="0 0 635.64 267.26"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn('overflow-visible', className)}
-      aria-label="LÕK Sports"
+      className={cn('flex-shrink-0', className)}
+      aria-label="LOK Sports"
     >
       {/* L */}
-      <text
-        x="0" y="24"
-        fontFamily="'Inter', 'Arial Black', sans-serif"
-        fontWeight="900"
-        fontSize="26"
-        fill={color}
-      >
-        L
-      </text>
-
-      {/* Õ — O with tilde (combining character) */}
-      <text
-        x="18" y="24"
-        fontFamily="'Inter', 'Arial Black', sans-serif"
-        fontWeight="900"
-        fontSize="26"
-        fill={color}
-      >
-        Õ
-      </text>
-
+      <path
+        fill={letterColor}
+        d="M156.58,208.78a80.2,80.2,0,0,1-1.36-8.26,2.82,2.82,0,0,0-2.81-2.5h-64A1.42,1.42,0,0,1,87,196.18L124.35,73.11a2.84,2.84,0,0,0-2.71-3.67h-64a2.84,2.84,0,0,0-2.72,2L.12,251.34A2.85,2.85,0,0,0,2.84,255H176.18a2.84,2.84,0,0,0,2-4.86A76,76,0,0,1,156.58,208.78Z"
+      />
       {/* K */}
-      <text
-        x="42" y="24"
-        fontFamily="'Inter', 'Arial Black', sans-serif"
-        fontWeight="900"
-        fontSize="26"
-        fill={color}
-      >
-        K
-      </text>
-
-      {/* SPORTS label */}
-      {showLabel && (
-        <text
-          x="68" y="24"
-          fontFamily="'Inter', 'Arial', sans-serif"
-          fontWeight="400"
-          fontSize="10"
-          fill={color}
-          opacity="0.7"
-          letterSpacing="1.5"
-        >
-          SPORTS
-        </text>
-      )}
+      <path
+        fill={letterColor}
+        d="M632.79,69.44H553.55a4,4,0,0,0-2.54.92L461.62,144a1.42,1.42,0,0,1-2.26-1.52l21.19-69.36a2.84,2.84,0,0,0-2.72-3.67H413.74a3,3,0,0,0-2.87,2.13L400.59,105.2a8.15,8.15,0,0,0,.34,5.63v0c8.07,18.24,8.85,39.27,2.26,60.84-6.78,22.21-20.84,43.31-40.36,61a7.84,7.84,0,0,0-2.27,3.54L356,251.14a3,3,0,0,0,2.87,3.87h64a2.84,2.84,0,0,0,2.72-2l22.08-72.28a1.43,1.43,0,0,1,2.58-.32l44,72.69a4,4,0,0,0,3.42,1.92H579a2.84,2.84,0,0,0,2.43-4.31l-51.71-85.38a4,4,0,0,1,.88-5.16l104-85.68A2.84,2.84,0,0,0,632.79,69.44Z"
+      />
+      {/* Green swoosh above O */}
+      <path
+        fill="#a7fd7e"
+        d="M268.32,31.08c-.56,2.11-1.19,4.47-2,7.61a2.84,2.84,0,0,0,2.59,3.57c29.71,1.38,70.59,8.21,96.65,24.39a2.84,2.84,0,0,0,3.75-4.15c-22.17-28.15-52.53-41.49-69.23-47a1.41,1.41,0,0,1-.94-1.61l2-10.46A2.84,2.84,0,0,0,298.29,0c-56,1.28-105.08,20-130,31.4A2.84,2.84,0,0,0,170,36.78c22.8-3.59,62.39-8.7,97.05-7.5A1.42,1.42,0,0,1,268.32,31.08Z"
+      />
+      {/* O */}
+      <path
+        fill={letterColor}
+        d="M273.55,99.25a131.19,131.19,0,0,1,21,9.92c7.19,4.24,13.66,9,18.4,15.39,6.55,8.77,14.54,24.45.82,45.57a59.43,59.43,0,0,1-17.67,17.39l-4.16,2.68c-15.48,10-35.05,12.52-52.66,7.66a63.13,63.13,0,0,1-19-8.79c-13-8.95-16.36-27.71-15.9-35.34a71.39,71.39,0,0,1,6-25.14q1.09-2.4,2.4-4.66a2.84,2.84,0,0,0-4-3.84c-.89.58-1.81,1.2-2.75,1.86-11.43,8-26.15,21.2-34.89,40.2-4.89,11.71-7.4,23.16-6.19,35.87a71.68,71.68,0,0,0,1.39,8.83c3.47,20.08,15.34,36.77,33.43,47.48,13.88,8.23,31.42,12.93,51.65,12.93,43.39,0,87.6-21.62,115.93-53.25,12.13-13.54,21.37-28.91,26.34-45.22s5.15-31.68,1.29-45.22c-5.56-19.52-19.52-35.23-39.59-44.4-1.52-.69-3.09-1.33-4.68-2C318.39,63.31,279,59,242.75,59a596.76,596.76,0,0,0-91.85,7.62c-3.11.51-3.25,5.16-.13,5.58C150.77,72.23,226.05,81.61,273.55,99.25Z"
+      />
     </svg>
   )
 }
@@ -76,12 +53,14 @@ export function LokBadge({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border border-brand-500/40 bg-brand-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-400',
+        'inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2',
         className
       )}
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-      Patrocinado por LÕK
+      <span className="font-condensed text-[10px] uppercase tracking-[0.2em] text-gray-500">
+        Patrocinado por
+      </span>
+      <LokLogo height={16} variant="white" />
     </div>
   )
 }
