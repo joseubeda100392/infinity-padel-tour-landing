@@ -173,7 +173,7 @@ export function RegisterForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative w-full overflow-hidden rounded-xl bg-brand-500 py-4 text-sm font-black uppercase tracking-[0.15em] text-white shadow-lg shadow-brand-500/25 transition-all hover:bg-brand-400 hover:shadow-xl hover:shadow-brand-400/30 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                className="group relative w-full overflow-hidden rounded-xl bg-brand-500 py-4 text-sm font-black uppercase tracking-[0.15em] text-gray-950 shadow-lg shadow-brand-500/20 transition-all hover:bg-brand-400 hover:shadow-xl hover:shadow-brand-400/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">

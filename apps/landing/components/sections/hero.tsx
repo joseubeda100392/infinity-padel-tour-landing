@@ -74,7 +74,7 @@ export function Hero() {
         {/* CTA */}
         <Link
           href="#registro"
-          className="group relative inline-flex items-center gap-3 overflow-hidden bg-brand-500 px-10 py-4 font-condensed text-sm font-bold uppercase tracking-[0.2em] text-white transition-all duration-200 hover:bg-brand-400 active:scale-95"
+          className="group relative inline-flex items-center gap-3 overflow-hidden bg-brand-500 px-10 py-4 font-condensed text-sm font-bold uppercase tracking-[0.2em] text-gray-950 transition-all duration-200 hover:bg-brand-400 active:scale-95"
         >
           <span className="relative z-10">{hero.cta}</span>
           <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-500 group-hover:translate-x-full" />

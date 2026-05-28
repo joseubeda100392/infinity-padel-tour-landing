@@ -9,7 +9,7 @@ interface IptLogoProps {
 export function IptLogo({ height = 44, variant = 'light', className }: IptLogoProps) {
   const textColor   = variant === 'dark' ? '#111827' : '#FFFFFF'
   const subColor    = variant === 'dark' ? '#374151' : '#A0AEC0'
-  const accentColor = '#F5501E'
+  const accentColor = '#a7fd7e'
 
   return (
     <svg
