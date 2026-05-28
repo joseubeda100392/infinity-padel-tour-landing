@@ -37,7 +37,7 @@ export function Hero() {
       {/* Navbar */}
       <header className="relative z-20 flex items-center justify-between px-6 py-5 sm:px-10 lg:px-16">
         <IptLogo height={32} variant="light" />
-        <LokLogo height={18} variant="orange" />
+        <LokLogo height={18} variant="white" />
       </header>
 
       {/* ── Hero content ── */}
@@ -84,7 +84,7 @@ export function Hero() {
       {/* Bottom brand bar */}
       <div className="relative z-10 flex items-center justify-center gap-8 border-t border-white/5 py-4">
         <span className="font-condensed text-[10px] uppercase tracking-[0.3em] text-gray-700">Patrocinador oficial</span>
-        <LokLogo height={14} variant="orange" showLabel={false} />
+        <LokLogo height={14} variant="white" />
         <div className="h-px w-8 bg-white/10" />
         <span className="font-condensed text-[10px] uppercase tracking-[0.3em] text-gray-700">Temporada 26/27</span>
       </div>

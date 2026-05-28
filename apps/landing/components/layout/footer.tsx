@@ -17,7 +17,7 @@ export function Footer() {
             <IptLogo height={36} variant="light" />
             <div className="flex items-center gap-1.5 text-xs text-gray-600">
               <span>Patrocinado por</span>
-              <LokLogo height={16} variant="orange" showLabel={false} />
+              <LokLogo height={16} variant="white" />
             </div>
           </div>
 
