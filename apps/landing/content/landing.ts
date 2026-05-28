@@ -66,7 +66,7 @@ export const landing = {
     copyright: `© ${new Date().getFullYear()} Infinity Padel Tour. Todos los derechos reservados.`,
     links: [
       { label: 'Privacidad', href: '/privacidad' },
-      { label: 'Contacto', href: 'mailto:hola@infinitypadeltourbylok.com' },
+      { label: 'Contacto', href: 'mailto:joseubeda10@gmail.com' },
     ],
   },
 }
