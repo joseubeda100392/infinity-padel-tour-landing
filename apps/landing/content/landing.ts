@@ -7,7 +7,7 @@ export const landing = {
   },
 
   hero: {
-    badge: '★ PRÓXIMAMENTE · TEMPORADA 2025',
+    badge: '★ PRÓXIMAMENTE · TEMPORADA 26/27',
     headline_line1: 'LA LIGA QUE',
     headline_line2: 'LO CAMBIA TODO.',
     subheadline:
