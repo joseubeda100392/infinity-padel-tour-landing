@@ -43,7 +43,7 @@ export function Hero() {
               <feGaussianBlur stdDeviation="25" />
             </filter>
           </defs>
-          <ellipse cx="500" cy="120" rx="420" ry="90" fill="#a7fd7e" fillOpacity="0.12" filter="url(#ellipse-blur)" />
+          <ellipse cx="500" cy="120" rx="420" ry="90" fill="#a7fd7e" fillOpacity="0.05" filter="url(#ellipse-blur)" />
         </svg>
       </div>
 
@@ -115,10 +115,10 @@ export function Hero() {
       )}
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pb-20 pt-0 text-center">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pb-20 pt-8 text-center">
 
         {/* Liquid glass card */}
-        <div className="glass-card -translate-y-[40px] flex flex-col justify-between p-5 w-[200px] h-[200px] text-left">
+        <div className="glass-card mb-8 flex flex-col justify-between p-5 w-[200px] h-[200px] text-left">
           <div className="font-condensed text-[11px] uppercase tracking-[0.2em] text-brand-500/70">
             [ TEMP 26/27 ]
           </div>
