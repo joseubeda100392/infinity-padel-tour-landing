@@ -1,0 +1,108 @@
+import { Trophy, Users, Star } from 'lucide-react'
+import { DarkGlowCard } from '@/components/shared/dark-glow-card'
+import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/shared/reveal-on-scroll'
+import { landing } from '@/content/landing'
+
+const ICON_MAP = {
+  Trophy,
+  Users,
+  Star,
+} as const
+
+type IconKey = keyof typeof ICON_MAP
+
+export function Liga() {
+  const { liga } = landing
+
+  return (
+    <section id="liga" className="relative overflow-hidden bg-[#0D1117] py-24 md:py-32">
+
+      {/* Grid pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
+
+      {/* Willy accent line top */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-willy/40 to-transparent" />
+
+      <div className="relative z-10 container mx-auto max-w-6xl px-4 sm:px-6">
+
+        {/* Header */}
+        <RevealOnScroll className="mb-16 max-w-3xl">
+          <span className="mb-4 block font-anek-label text-[11px] uppercase tracking-[0.3em] text-willy">
+            {liga.eyebrow}
+          </span>
+          <h2
+            className="mb-6 font-display text-white"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 800, fontStretch: '105%' }}
+          >
+            {liga.headline}
+          </h2>
+          <p className="max-w-xl text-sm leading-relaxed text-white/50 sm:text-base">
+            {liga.description}
+          </p>
+        </RevealOnScroll>
+
+        {/* Pillars */}
+        <StaggerContainer className="mb-20 grid grid-cols-1 gap-4 md:grid-cols-3" staggerDelay={0.12}>
+          {liga.pillars.map((pillar) => {
+            const Icon = ICON_MAP[pillar.icon as IconKey] ?? Trophy
+            return (
+              <StaggerItem key={pillar.title}>
+                <DarkGlowCard className="card-willy h-full rounded-none bg-white/[0.02] p-7">
+                  <div className="mb-5 inline-flex h-10 w-10 items-center justify-center border border-willy/30 bg-willy/10">
+                    <Icon size={18} className="text-vibora" />
+                  </div>
+                  <h3
+                    className="mb-3 font-display text-white"
+                    style={{ fontSize: '1.125rem', fontWeight: 700, fontStretch: '100%' }}
+                  >
+                    {pillar.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/45">
+                    {pillar.description}
+                  </p>
+                </DarkGlowCard>
+              </StaggerItem>
+            )
+          })}
+        </StaggerContainer>
+
+        {/* Steps */}
+        <RevealOnScroll>
+          <div className="border-l border-willy/20 pl-8">
+            <span className="mb-8 block font-anek-label text-[11px] uppercase tracking-[0.3em] text-white/40">
+              ¿Cómo funciona?
+            </span>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+              {liga.steps.map((step, idx) => (
+                <div key={step.number} className="relative">
+                  {/* Connector dot */}
+                  <div className="absolute -left-[2.35rem] top-0 flex h-5 w-5 -translate-x-1/2 items-center justify-center rounded-full border border-willy/40 bg-[#0D1117]">
+                    <div className="h-1.5 w-1.5 rounded-full bg-vibora" />
+                  </div>
+                  <div
+                    className="mb-2 font-display text-vibora"
+                    style={{ fontSize: '2rem', fontWeight: 800, lineHeight: 1 }}
+                  >
+                    {step.number}
+                  </div>
+                  <h4
+                    className="mb-1.5 font-display text-white"
+                    style={{ fontSize: '1rem', fontWeight: 700 }}
+                  >
+                    {step.title}
+                  </h4>
+                  <p className="text-sm leading-relaxed text-white/40">
+                    {step.description}
+                  </p>
+                  {idx < liga.steps.length - 1 && (
+                    <div className="mt-4 hidden h-px w-full bg-white/[0.06] lg:block" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </RevealOnScroll>
+      </div>
+    </section>
+  )
+}

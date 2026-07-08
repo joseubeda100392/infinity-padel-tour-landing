@@ -11,24 +11,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Logoteca oficial — Infinity Padel Tour
+        vibora:    '#00FB9F', // acento primario — CTAs, glow, neon
+        willy:     '#088356', // color de marca — bordes, iconos, dividers
+        dormilona: '#08462F', // base oscura — secciones alternadas
+        balance:   '#EFDEC2', // neutro cálido — status, texto legal
+        bandeja:   '#FFD48F', // dorado premium — eyebrow eventos, detalles
+        chiquita:  '#FF7300', // naranja — CTAs secundarios, pílulas categoría
+        // brand alias → Víbora para compatibilidad interna
         brand: {
-          50:  '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#bffe92',
-          500: '#a7fd7e',
-          600: '#7ce849',
-          700: '#5cb829',
-          800: '#3f8c18',
-          900: '#275c0d',
-          950: '#133006',
+          50:  '#edfff7',
+          100: '#d0fff0',
+          200: '#a4ffe4',
+          300: '#64ffd4',
+          400: '#3dfdb5',
+          500: '#00FB9F', // Víbora
+          600: '#00d985',
+          700: '#088356', // Willy
+          800: '#08462F', // Dormilona
+          900: '#053020',
+          950: '#021a11',
         },
       },
       fontFamily: {
-        sans:      ['var(--font-ubuntu)', 'system-ui', 'sans-serif'],
-        display:   ['var(--font-bebas)', 'Impact', 'sans-serif'],
-        condensed: ['var(--font-ubuntu-condensed)', 'var(--font-ubuntu)', 'sans-serif'],
+        sans:      ['var(--font-anek)', 'system-ui', 'sans-serif'],
+        display:   ['var(--font-anek)', 'system-ui', 'sans-serif'],
+        condensed: ['var(--font-anek)', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         'fade-up': {

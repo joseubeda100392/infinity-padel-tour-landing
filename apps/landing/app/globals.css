@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --bg-deep: #05080F;
-  --bg-mid: #0D1117;
+  --bg-deep:      #05080F;
+  --bg-mid:       #0D1117;
+  --color-accent: #00FB9F; /* Víbora */
+  --color-brand:  #088356; /* Willy  */
+  --color-base:   #08462F; /* Dormilona */
 }
 
 * { box-sizing: border-box; padding: 0; margin: 0; }
@@ -28,15 +31,14 @@ body {
   }
 
   .text-gradient-brand {
-    background: linear-gradient(135deg, #bffe92 0%, #a7fd7e 50%, #7ce849 100%);
+    background: linear-gradient(135deg, #3dfdb5 0%, #00FB9F 50%, #088356 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Outline text — premium sport style */
   .text-outline-brand {
-    -webkit-text-stroke: 2px #a7fd7e;
+    -webkit-text-stroke: 2px #00FB9F;
     color: transparent;
   }
 
@@ -44,6 +46,12 @@ body {
     -webkit-text-stroke: 1.5px rgba(255,255,255,0.4);
     color: transparent;
   }
+
+  /* Anek Latin weight helpers */
+  .font-anek-display  { font-weight: 800; font-stretch: 125%; }
+  .font-anek-heading  { font-weight: 700; font-stretch: 87.5%; }
+  .font-anek-label    { font-weight: 600; font-stretch: 75%; }
+  .font-anek-body     { font-weight: 400; }
 }
 
 /* ── Noise texture overlay ── */
@@ -62,11 +70,11 @@ body {
   mix-blend-mode: overlay;
 }
 
-/* ── Dark Glow Card (lime green spotlight for dark bg) ── */
+/* ── Dark Glow Card (Víbora spotlight) ── */
 .dark-glow-card {
   background: radial-gradient(
     circle 280px at var(--glow-x, -999px) var(--glow-y, -999px),
-    rgba(167, 253, 126, 0.08) 0%,
+    rgba(0, 251, 159, 0.07) 0%,
     transparent 70%
   );
   transition: background 0.15s ease;
@@ -97,7 +105,7 @@ body {
   position: absolute;
   inset: -1.5px;
   border-radius: inherit;
-  background: linear-gradient(135deg, #bffe92, #a7fd7e, #7ce849, #bffe92);
+  background: linear-gradient(135deg, #3dfdb5, #00FB9F, #088356, #3dfdb5);
   background-size: 300% 300%;
   animation: gradient-border-spin 3s linear infinite;
   z-index: -1;
@@ -107,4 +115,22 @@ body {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* ── Willy border glow (pillar cards) ── */
+.card-willy {
+  border: 1px solid rgba(8, 131, 86, 0.3);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-willy:hover {
+  border-color: rgba(8, 131, 86, 0.6);
+  box-shadow: 0 0 24px rgba(0, 251, 159, 0.06);
+}
+
+/* ── Event card gradient backgrounds ── */
+.event-card-upcoming {
+  background: linear-gradient(135deg, #08462F 0%, #088356 60%, #00FB9F15 100%);
+}
+.event-card-finished {
+  background: linear-gradient(135deg, #05080F 0%, #08462F 100%);
 }

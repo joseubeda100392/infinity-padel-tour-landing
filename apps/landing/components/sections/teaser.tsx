@@ -10,7 +10,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 }
 
 export function Teaser() {
-  const { teaser } = landing
+  const { liga: teaser } = landing
 
   return (
     <section className="relative overflow-hidden bg-[#0D1117] py-24 md:py-32">
@@ -33,7 +33,7 @@ export function Teaser() {
           >
             {teaser.headline}
           </h2>
-          <p className="mt-5 font-condensed text-sm uppercase tracking-[0.1em] text-gray-600 sm:text-base">{teaser.subheadline}</p>
+          <p className="mt-5 font-condensed text-sm uppercase tracking-[0.1em] text-gray-600 sm:text-base">{teaser.description}</p>
         </RevealOnScroll>
 
         {/* Pillars */}

@@ -28,7 +28,7 @@ const TRUST_ITEMS = [
 ]
 
 export function RegisterForm() {
-  const { register: reg } = landing
+  const { ligaForm: reg } = landing
   const [submitted, setSubmitted] = useState(false)
 
   const {
@@ -106,7 +106,7 @@ export function RegisterForm() {
               {/* Name */}
               <div className="mb-4">
                 <label className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-gray-500">
-                  {reg.fields.name}
+                  {reg.fields.nombre}
                 </label>
                 <input
                   {...register('name')}
@@ -154,7 +154,7 @@ export function RegisterForm() {
                 </div>
                 <div>
                   <label className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-gray-500">
-                    {reg.fields.phone}
+                    {reg.fields.telefono}
                   </label>
                   <input
                     {...register('phone')}

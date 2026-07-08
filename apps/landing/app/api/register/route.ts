@@ -2,10 +2,14 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 const schema = z.object({
-  name:  z.string().min(2),
-  email: z.string().email(),
-  club:  z.string().min(2),
-  phone: z.string().min(9),
+  nombre:     z.string().min(2),
+  email:      z.string().email(),
+  telefono:   z.string().min(9),
+  club:       z.string().min(2).optional(),
+  nivel:      z.string().min(2).optional(),
+  categoria:  z.string().min(2).optional(),
+  comentario: z.string().optional(),
+  type:       z.enum(['liga', 'evento']).default('liga'),
 })
 
 const WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL!
@@ -23,12 +27,7 @@ export async function POST(req: Request) {
     await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name:  data.name,
-        email: data.email,
-        club:  data.club,
-        phone: data.phone,
-      }),
+      body: JSON.stringify(data),
     })
 
     return NextResponse.json({ ok: true })
