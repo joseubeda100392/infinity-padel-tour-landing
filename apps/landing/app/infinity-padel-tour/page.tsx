@@ -5,11 +5,11 @@ import { LokTourForm } from '@/components/sections/lok-tour-form'
 import { Footer } from '@/components/layout/footer'
 
 export const metadata = {
-  title: 'LOK Pádel Tour — El circuito que recorre España',
-  description: 'Torneos de 1-2 días en las mejores instalaciones del país. Formato Open para todos los niveles. Seis ciudades, una temporada.',
+  title: 'Infinity Padel Tour — One Day Experience',
+  description: 'Torneos premium de un día en instalaciones de élite. Gastronomía, cuadros por nivel y una experiencia única.',
 }
 
-export default function LokPadelTourPage() {
+export default function InfinityPadelTourPage() {
   return (
     <>
       <ScrollFX />

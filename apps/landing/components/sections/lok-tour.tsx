@@ -1,14 +1,14 @@
-import { MapPin, Calendar, Trophy } from 'lucide-react'
+import { Clock, Trophy, Star, MapPin, Calendar } from 'lucide-react'
 import { DarkGlowCard } from '@/components/shared/dark-glow-card'
-import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/shared/reveal-on-scroll'
 import { LokLogo } from '@/components/shared/lok-logo'
+import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/shared/reveal-on-scroll'
 import { landing } from '@/content/landing'
 
-const ICON_MAP = { MapPin, Calendar, Trophy } as const
+const ICON_MAP = { Clock, Trophy, Star, MapPin, Calendar } as const
 type IconKey = keyof typeof ICON_MAP
 
 export function LokTour() {
-  const { lokTour } = landing
+  const { oneDay } = landing
 
   return (
     <section className="relative overflow-hidden bg-[#0D1117] py-24 md:py-32">
@@ -24,23 +24,23 @@ export function LokTour() {
             <LokLogo height={18} variant="white" />
             <div className="h-3 w-px bg-bandeja/30" />
             <span className="font-anek-label text-[11px] uppercase tracking-[0.3em] text-bandeja">
-              {lokTour.eyebrow}
+              {oneDay.eyebrow}
             </span>
           </div>
           <h2
             className="mb-6 font-display text-white"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 800, fontStretch: '105%' }}
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700 }}
           >
-            {lokTour.headline}
+            {oneDay.headline}
           </h2>
           <p className="max-w-xl text-sm leading-relaxed text-white/50 sm:text-base">
-            {lokTour.description}
+            {oneDay.description}
           </p>
         </RevealOnScroll>
 
         {/* Pillars */}
         <StaggerContainer className="mb-20 grid grid-cols-1 gap-4 md:grid-cols-3" staggerDelay={0.1}>
-          {lokTour.pillars.map((pillar) => {
+          {oneDay.pillars.map((pillar) => {
             const Icon = ICON_MAP[pillar.icon as IconKey] ?? Trophy
             return (
               <StaggerItem key={pillar.title}>
@@ -64,18 +64,17 @@ export function LokTour() {
         {/* Tournament cards */}
         <RevealOnScroll>
           <span className="mb-8 block font-anek-label text-[11px] uppercase tracking-[0.3em] text-white/30">
-            Calendario Temporada 26/27
+            Próximas fechas
           </span>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {lokTour.items.map((item, idx) => (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {oneDay.items.map((item, idx) => (
               <div
                 key={item.id}
                 className="group relative overflow-hidden border border-bandeja/15 bg-white/[0.02] p-6 transition-all duration-200 hover:border-bandeja/40 hover:bg-white/[0.04]"
               >
-                {/* Number */}
                 <div
                   className="absolute right-4 top-4 font-display text-white/[0.04]"
-                  style={{ fontSize: '4rem', fontWeight: 800, lineHeight: 1 }}
+                  style={{ fontSize: '4rem', fontWeight: 700, lineHeight: 1 }}
                 >
                   {String(idx + 1).padStart(2, '0')}
                 </div>
@@ -97,7 +96,7 @@ export function LokTour() {
                   <div className="flex flex-col gap-1.5">
                     <div className="flex items-center gap-2 text-white/40">
                       <MapPin size={11} />
-                      <span className="font-anek-label text-[11px] uppercase tracking-[0.1em]">{item.city}</span>
+                      <span className="font-anek-label text-[11px] uppercase tracking-[0.1em]">{item.location}</span>
                     </div>
                     <div className="flex items-center gap-2 text-white/40">
                       <Calendar size={11} />

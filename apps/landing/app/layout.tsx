@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import { Anek_Latin } from 'next/font/google'
+import { Ubuntu } from 'next/font/google'
 import { Toaster } from 'sonner'
 import './globals.css'
 import { landing } from '@/content/landing'
 
-const anekLatin = Anek_Latin({
+const ubuntu = Ubuntu({
   subsets: ['latin'],
-  axes: ['wdth'],
-  variable: '--font-anek',
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-ubuntu',
   display: 'swap',
 })
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={anekLatin.variable}>
+    <html lang="es" className={ubuntu.variable}>
       <body>
         {children}
         <Toaster

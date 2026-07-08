@@ -29,7 +29,7 @@ const INPUT_ERR   = 'border-red-500/50'
 const LABEL_CLASS = 'mb-1.5 block font-anek-label text-[10px] uppercase tracking-[0.25em] text-white/40'
 
 export function LokTourForm() {
-  const { lokTourForm } = landing
+  const { oneDayForm: lokTourForm } = landing
   const [submitted, setSubmitted] = useState(false)
 
   const {

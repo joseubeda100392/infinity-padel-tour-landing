@@ -5,7 +5,7 @@ import { LokLogo } from '@/components/shared/lok-logo'
 import { landing } from '@/content/landing'
 
 export function LokTourHero() {
-  const { lokTourHero } = landing
+  const { oneDayHero } = landing
 
   return (
     <section className="noise-overlay relative flex min-h-[75vh] flex-col overflow-hidden bg-[#05080F]">
@@ -40,32 +40,31 @@ export function LokTourHero() {
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pb-16 pt-0 text-center">
 
-        {/* Eyebrow with LokLogo */}
         <div className="mb-8 inline-flex items-center gap-3 border border-bandeja/30 bg-bandeja/[0.07] px-4 py-2.5">
           <LokLogo height={16} variant="white" />
           <div className="h-3 w-px bg-bandeja/30" />
           <span className="font-anek-label text-[11px] uppercase tracking-[0.3em] text-bandeja">
-            {lokTourHero.eyebrow}
+            {oneDayHero.eyebrow}
           </span>
         </div>
 
         <h1
-          className="mb-6 font-display uppercase leading-[0.88] tracking-tight"
-          style={{ fontSize: 'clamp(3rem, 10vw, 9rem)', fontWeight: 800, fontStretch: '115%' }}
+          className="mb-6 font-display uppercase leading-[0.9] tracking-tight"
+          style={{ fontSize: 'clamp(3rem, 10vw, 9rem)', fontWeight: 700 }}
         >
-          <span className="block text-white">{lokTourHero.headline_line1}</span>
-          <span className="block text-bandeja">{lokTourHero.headline_line2}</span>
+          <span className="block text-white">{oneDayHero.headline_line1}</span>
+          <span className="block text-bandeja">{oneDayHero.headline_line2}</span>
         </h1>
 
         <p className="mb-10 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base">
-          {lokTourHero.description}
+          {oneDayHero.description}
         </p>
 
         <Link
           href="#lok-tour-form"
           className="group inline-flex items-center gap-2.5 bg-bandeja px-8 py-4 font-anek-label text-[12px] font-bold uppercase tracking-[0.2em] text-[#05080F] transition-all duration-200 hover:brightness-110 active:scale-95"
         >
-          {lokTourHero.cta}
+          {oneDayHero.cta}
           <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
       </div>

@@ -34,9 +34,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans:      ['var(--font-anek)', 'system-ui', 'sans-serif'],
-        display:   ['var(--font-anek)', 'system-ui', 'sans-serif'],
-        condensed: ['var(--font-anek)', 'system-ui', 'sans-serif'],
+        sans:      ['var(--font-ubuntu)', 'system-ui', 'sans-serif'],
+        display:   ['var(--font-ubuntu)', 'system-ui', 'sans-serif'],
+        condensed: ['var(--font-ubuntu)', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         'fade-up': {

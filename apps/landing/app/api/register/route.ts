@@ -10,7 +10,7 @@ const schema = z.object({
   categoria:  z.string().min(2).optional(),
   ciudad:     z.string().min(2).optional(),
   comentario: z.string().optional(),
-  type:       z.enum(['liga', 'evento', 'tour']).default('liga'),
+  type:       z.enum(['liga', 'tour']).default('liga'),
 })
 
 const WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL!
