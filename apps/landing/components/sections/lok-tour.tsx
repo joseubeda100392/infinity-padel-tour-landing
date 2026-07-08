@@ -1,6 +1,7 @@
 import { MapPin, Calendar, Trophy } from 'lucide-react'
 import { DarkGlowCard } from '@/components/shared/dark-glow-card'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/shared/reveal-on-scroll'
+import { LokLogo } from '@/components/shared/lok-logo'
 import { landing } from '@/content/landing'
 
 const ICON_MAP = { MapPin, Calendar, Trophy } as const
@@ -19,9 +20,13 @@ export function LokTour() {
 
         {/* Header */}
         <RevealOnScroll className="mb-16 max-w-3xl">
-          <span className="mb-4 block font-anek-label text-[11px] uppercase tracking-[0.3em] text-bandeja">
-            {lokTour.eyebrow}
-          </span>
+          <div className="mb-4 flex items-center gap-2.5">
+            <LokLogo height={18} variant="white" />
+            <div className="h-3 w-px bg-bandeja/30" />
+            <span className="font-anek-label text-[11px] uppercase tracking-[0.3em] text-bandeja">
+              {lokTour.eyebrow}
+            </span>
+          </div>
           <h2
             className="mb-6 font-display text-white"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 800, fontStretch: '105%' }}

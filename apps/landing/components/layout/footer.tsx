@@ -15,14 +15,14 @@ export function Footer() {
           {/* Logos */}
           <div className="flex flex-col items-center gap-3">
             <IptLogo height={36} variant="light" />
-            <div className="flex items-center gap-1.5 text-xs text-gray-600">
+            <div className="flex items-center gap-1.5 text-xs text-white/45">
               <span>Patrocinado por</span>
               <LokLogo height={16} variant="white" />
             </div>
           </div>
 
           {/* Links */}
-          <nav className="flex items-center gap-6 text-sm text-gray-600">
+          <nav className="flex items-center gap-6 text-sm text-white/45">
             {footer.links.map((link) => (
               <Link
                 key={link.label}
@@ -35,7 +35,7 @@ export function Footer() {
           </nav>
 
           {/* Copyright */}
-          <p className="text-xs text-gray-700">{footer.copyright}</p>
+          <p className="text-xs text-white/35">{footer.copyright}</p>
         </div>
       </div>
     </footer>

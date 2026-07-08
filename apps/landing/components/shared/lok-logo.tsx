@@ -57,7 +57,7 @@ export function LokBadge({ className }: { className?: string }) {
         className
       )}
     >
-      <span className="font-condensed text-[10px] uppercase tracking-[0.2em] text-gray-500">
+      <span className="font-condensed text-[10px] uppercase tracking-[0.2em] text-white/45">
         Patrocinado por
       </span>
       <LokLogo height={16} variant="white" />

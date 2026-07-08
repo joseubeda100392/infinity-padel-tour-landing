@@ -8,28 +8,28 @@ type Accent = 'vibora' | 'bandeja' | 'chiquita'
 
 const ACCENT: Record<Accent, { border: string; bg: string; hover: string; glow: string; text: string; line: string }> = {
   vibora: {
-    border: 'border-vibora/20',
+    border: 'border-vibora/25',
     bg:     'bg-vibora/[0.03]',
-    hover:  'hover:border-vibora/50 hover:bg-vibora/[0.07]',
-    glow:   'bg-vibora/[0.06]',
+    hover:  'hover:border-vibora/55 hover:bg-vibora/[0.08]',
+    glow:   'bg-vibora/[0.07]',
     text:   'text-vibora',
-    line:   'via-vibora/40',
+    line:   'via-vibora/50',
   },
   bandeja: {
-    border: 'border-bandeja/20',
+    border: 'border-bandeja/25',
     bg:     'bg-bandeja/[0.03]',
-    hover:  'hover:border-bandeja/50 hover:bg-bandeja/[0.07]',
-    glow:   'bg-bandeja/[0.06]',
+    hover:  'hover:border-bandeja/55 hover:bg-bandeja/[0.08]',
+    glow:   'bg-bandeja/[0.07]',
     text:   'text-bandeja',
-    line:   'via-bandeja/40',
+    line:   'via-bandeja/50',
   },
   chiquita: {
-    border: 'border-chiquita/20',
+    border: 'border-chiquita/25',
     bg:     'bg-chiquita/[0.03]',
-    hover:  'hover:border-chiquita/50 hover:bg-chiquita/[0.07]',
-    glow:   'bg-chiquita/[0.06]',
+    hover:  'hover:border-chiquita/55 hover:bg-chiquita/[0.08]',
+    glow:   'bg-chiquita/[0.07]',
     text:   'text-chiquita',
-    line:   'via-chiquita/40',
+    line:   'via-chiquita/50',
   },
 }
 
@@ -39,11 +39,12 @@ export function Hub() {
   return (
     <section className="noise-overlay relative flex min-h-screen flex-col overflow-hidden bg-[#05080F]">
 
-      <div className="absolute inset-x-0 top-0 h-[3px] z-30" style={{ background: 'linear-gradient(90deg, #00FB9F 0%, #FFD48F 50%, #FF7300 100%)' }} />
+      {/* Triple brand stripe */}
+      <div className="absolute inset-x-0 top-0 h-[3px] z-30"
+        style={{ background: 'linear-gradient(90deg, #00FB9F 0%, #FFD48F 50%, #FF7300 100%)' }} />
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-[#05080F] to-[#05080F]" />
 
-      {/* Court lines */}
       <div className="absolute inset-0 overflow-hidden opacity-[0.04]">
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
           <line x1="50" y1="0" x2="50" y2="100" stroke="white" strokeWidth="0.3" />
@@ -70,8 +71,8 @@ export function Hub() {
       {/* Content */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pb-16 pt-0 text-center">
 
-        <div className="mb-8 inline-flex items-center gap-2.5 border border-white/10 bg-white/[0.04] px-4 py-2">
-          <span className="font-anek-label text-[11px] uppercase tracking-[0.3em] text-white/40">
+        <div className="mb-8 inline-flex items-center gap-2.5 border border-white/15 bg-white/[0.05] px-4 py-2">
+          <span className="font-anek-label text-[11px] uppercase tracking-[0.3em] text-white/60">
             {hub.badge}
           </span>
         </div>
@@ -81,10 +82,10 @@ export function Hub() {
           style={{ fontSize: 'clamp(3.5rem, 11vw, 10rem)', fontWeight: 800, fontStretch: '115%' }}
         >
           <span className="block text-white">{hub.headline_line1}</span>
-          <span className="block text-white/20">{hub.headline_line2}</span>
+          <span className="block text-white/25">{hub.headline_line2}</span>
         </h1>
 
-        <p className="mb-16 max-w-md text-sm leading-relaxed text-white/40 sm:text-base">
+        <p className="mb-16 max-w-md text-sm leading-relaxed text-white/55 sm:text-base">
           {hub.description}
         </p>
 
@@ -92,6 +93,9 @@ export function Hub() {
         <div className="grid w-full max-w-5xl grid-cols-1 gap-3 sm:grid-cols-3">
           {hub.services.map((service) => {
             const a = ACCENT[service.accent]
+            const isLokTour = service.id === 'lok-padel-tour'
+            const isLiga    = service.id === 'liga'
+
             return (
               <Link
                 key={service.id}
@@ -107,13 +111,43 @@ export function Hub() {
                   <span className={`mb-4 block font-anek-label text-[10px] uppercase tracking-[0.3em] ${a.text}`}>
                     {service.eyebrow}
                   </span>
-                  <h2
-                    className="mb-3 font-display text-white"
-                    style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 800, fontStretch: '105%' }}
-                  >
-                    {service.title}
-                  </h2>
-                  <p className="mb-6 text-sm leading-relaxed text-white/40">
+
+                  {/* Title — LOK Pádel Tour shows LokLogo */}
+                  {isLokTour ? (
+                    <div className="mb-3">
+                      <div className="mb-1 flex items-center gap-2">
+                        <LokLogo height={16} variant="white" />
+                      </div>
+                      <h2
+                        className="font-display text-white"
+                        style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 800, fontStretch: '105%' }}
+                      >
+                        {service.title}
+                      </h2>
+                    </div>
+                  ) : isLiga ? (
+                    <div className="mb-3">
+                      <h2
+                        className="font-display text-white"
+                        style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 800, fontStretch: '105%' }}
+                      >
+                        {service.title}
+                      </h2>
+                      <div className="mt-1 flex items-center gap-1.5">
+                        <span className="font-anek-label text-[9px] uppercase tracking-[0.2em] text-white/40">by</span>
+                        <LokLogo height={12} variant="white" />
+                      </div>
+                    </div>
+                  ) : (
+                    <h2
+                      className="mb-3 font-display text-white"
+                      style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 800, fontStretch: '105%' }}
+                    >
+                      {service.title}
+                    </h2>
+                  )}
+
+                  <p className="mb-6 text-sm leading-relaxed text-white/55">
                     {service.description}
                   </p>
                   <div className={`inline-flex items-center gap-2 font-anek-label text-[11px] uppercase tracking-[0.2em] ${a.text}`}>
@@ -129,10 +163,9 @@ export function Hub() {
         </div>
       </div>
 
-      <div className="relative z-10 flex items-center justify-center gap-8 border-t border-white/5 py-4">
+      <div className="relative z-10 flex items-center justify-center gap-6 border-t border-white/8 py-4">
+        <span className="font-anek-label text-[10px] uppercase tracking-[0.3em] text-white/30">Patrocinado por</span>
         <LokLogo height={14} variant="white" />
-        <div className="h-px w-8 bg-white/10" />
-        <span className="font-anek-label text-[10px] uppercase tracking-[0.3em] text-white/20">Temporada 26/27</span>
       </div>
     </section>
   )
