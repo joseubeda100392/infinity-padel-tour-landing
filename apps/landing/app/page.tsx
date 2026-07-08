@@ -1,10 +1,6 @@
 import { ScrollFX } from '@/components/shared/scroll-fx'
 import { Marquee } from '@/components/shared/marquee'
-import { Hero } from '@/components/sections/hero'
-import { Liga } from '@/components/sections/liga'
-import { LigaForm } from '@/components/sections/liga-form'
-import { Eventos } from '@/components/sections/eventos'
-import { EventoForm } from '@/components/sections/evento-form'
+import { Hub } from '@/components/sections/hub'
 import { Footer } from '@/components/layout/footer'
 
 export default function Home() {
@@ -12,12 +8,8 @@ export default function Home() {
     <>
       <ScrollFX />
       <main>
-        <Hero />
+        <Hub />
         <Marquee />
-        <Liga />
-        <LigaForm />
-        <Eventos />
-        <EventoForm />
       </main>
       <Footer />
     </>

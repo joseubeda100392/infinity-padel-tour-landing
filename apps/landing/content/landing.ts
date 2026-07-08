@@ -1,4 +1,45 @@
 export const landing = {
+  hub: {
+    badge: 'TEMPORADA 26/27',
+    headline_line1: 'INFINITY',
+    headline_line2: 'PADEL TOUR.',
+    description: 'Dos formas de vivir el pádel. Una liga competitiva y eventos premium bajo un mismo circuito.',
+    services: [
+      {
+        id: 'liga',
+        eyebrow: 'COMPETICIÓN',
+        title: 'Liga Infinity Padel Tour',
+        description: 'Compite cada semana en grupos por nivel real. Calendario fijo, arbitraje profesional y estadísticas en tiempo real durante toda la temporada.',
+        cta: 'Descubre la Liga',
+        href: '/liga',
+      },
+      {
+        id: 'ipt-experience',
+        eyebrow: 'EXPERIENCIA',
+        title: 'IPT Experience',
+        description: 'Torneos y experiencias premium en instalaciones de élite. Gastronomía, formato exclusivo y un ambiente pensado para disfrutar el pádel de otra manera.',
+        cta: 'Ver Eventos',
+        href: '/ipt-experience',
+      },
+    ],
+  },
+
+  ligaHero: {
+    eyebrow: 'LIGA INFINITY PADEL TOUR',
+    headline_line1: 'COMPITE.',
+    headline_line2: 'CADA SEMANA.',
+    description: 'Una liga estructurada durante toda la temporada, con grupos por nivel real y una experiencia que va más allá de ganar o perder.',
+    cta: 'INSCRIBIRME EN LA LIGA',
+  },
+
+  eventosHero: {
+    eyebrow: 'IPT EXPERIENCE',
+    headline_line1: 'PÁDEL',
+    headline_line2: 'PREMIUM.',
+    description: 'Torneos y experiencias exclusivas en instalaciones de élite. Gastronomía, formato único y un circuito diseñado para disfrutar.',
+    cta: 'QUIERO APUNTARME',
+  },
+
   meta: {
     title: 'Infinity Padel Tour BY LÕK — La liga que lo cambia todo',
     description:
