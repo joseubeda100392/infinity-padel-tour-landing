@@ -8,8 +8,9 @@ const schema = z.object({
   club:       z.string().min(2).optional(),
   nivel:      z.string().min(2).optional(),
   categoria:  z.string().min(2).optional(),
+  ciudad:     z.string().min(2).optional(),
   comentario: z.string().optional(),
-  type:       z.enum(['liga', 'evento']).default('liga'),
+  type:       z.enum(['liga', 'evento', 'tour']).default('liga'),
 })
 
 const WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL!

@@ -5,7 +5,19 @@ import { LokLogo } from '@/components/shared/lok-logo'
 import { landing } from '@/content/landing'
 
 export function Hero() {
-  const { hero } = landing
+  const hero = {
+    badge: landing.hub.badge,
+    headline_line1: landing.hub.headline_line1,
+    headline_line2: landing.hub.headline_line2,
+    description: landing.hub.description,
+    cta_primary: 'ÚNETE A LA LIGA',
+    cta_secondary: 'IPT EXPERIENCE',
+    stats: [
+      { value: '3', label: 'SERVICIOS' },
+      { value: 'T26/27', label: 'TEMPORADA' },
+      { value: 'LÕK', label: 'PARTNER OFICIAL' },
+    ],
+  }
 
   return (
     <section id="hero" className="noise-overlay relative flex min-h-screen flex-col overflow-hidden bg-[#05080F]">
