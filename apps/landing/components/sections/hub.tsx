@@ -35,7 +35,16 @@ export function Hub() {
       <div className="absolute inset-x-0 top-0 h-[3px] z-30"
         style={{ background: 'linear-gradient(90deg, #00FB9F 0%, #FFD48F 100%)' }} />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-[#05080F] to-[#05080F]" />
+      {/* Background image */}
+      <img
+        src="https://images.unsplash.com/photo-1658723826297-fe4d1b1e6600?auto=format&fit=crop&w=1920&q=80"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+        fetchPriority="high"
+      />
+      <div className="absolute inset-0 bg-[#05080F]/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-[#05080F]/60 to-[#05080F]" />
 
       <div className="absolute inset-0 overflow-hidden opacity-[0.04]">
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">

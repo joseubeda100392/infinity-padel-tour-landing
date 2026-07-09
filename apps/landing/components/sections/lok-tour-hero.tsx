@@ -11,7 +11,17 @@ export function LokTourHero() {
     <section className="noise-overlay relative flex min-h-[75vh] flex-col overflow-hidden bg-[#05080F]">
 
       <div className="absolute inset-x-0 top-0 h-[3px] bg-bandeja z-30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-[#05080F] to-[#05080F]" />
+
+      {/* Background image */}
+      <img
+        src="https://images.unsplash.com/photo-1612534847738-b3af9bc31f0c?auto=format&fit=crop&w=1920&q=80"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+        fetchPriority="high"
+      />
+      <div className="absolute inset-0 bg-[#05080F]/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-[#05080F]/60 to-[#05080F]" />
 
       <div className="absolute inset-0 overflow-hidden opacity-[0.04]">
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">

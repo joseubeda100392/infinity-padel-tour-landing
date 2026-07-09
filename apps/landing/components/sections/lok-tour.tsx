@@ -67,49 +67,59 @@ export function LokTour() {
             Próximas fechas
           </span>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {oneDay.items.map((item, idx) => (
+            {oneDay.items.map((item) => (
               <div
                 key={item.id}
-                className="group relative overflow-hidden border border-bandeja/15 bg-white/[0.02] p-6 transition-all duration-200 hover:border-bandeja/40 hover:bg-white/[0.04]"
+                className="group relative overflow-hidden border border-bandeja/20 transition-all duration-300 hover:border-bandeja/50"
+                style={{ minHeight: '260px' }}
               >
-                <div
-                  className="absolute right-4 top-4 font-display text-white/[0.04]"
-                  style={{ fontSize: '4rem', fontWeight: 700, lineHeight: 1 }}
-                >
-                  {String(idx + 1).padStart(2, '0')}
-                </div>
+                {/* Image background */}
+                {item.image && (
+                  <>
+                    <img
+                      src={item.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-[#05080F]/70 transition-opacity duration-300 group-hover:bg-[#05080F]/55" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#05080F]/90 via-transparent to-transparent" />
+                  </>
+                )}
 
-                <div className="relative z-10">
-                  <div className="mb-4 flex items-center gap-2">
-                    <span className="border border-bandeja/30 px-2 py-0.5 font-anek-label text-[9px] uppercase tracking-[0.15em] text-bandeja">
+                <div className="relative z-10 flex h-full flex-col justify-between p-6" style={{ minHeight: '260px' }}>
+                  <div className="flex items-center gap-2">
+                    <span className="border border-bandeja/40 bg-bandeja/10 px-2 py-0.5 font-anek-label text-[9px] uppercase tracking-[0.15em] text-bandeja">
                       {item.format}
                     </span>
                   </div>
 
-                  <h3
-                    className="mb-3 font-display leading-tight text-white"
-                    style={{ fontSize: '1rem', fontWeight: 700 }}
-                  >
-                    {item.name}
-                  </h3>
-
-                  <div className="flex flex-col gap-1.5">
-                    <div className="flex items-center gap-2 text-white/40">
-                      <MapPin size={11} />
-                      <span className="font-anek-label text-[11px] uppercase tracking-[0.1em]">{item.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-white/40">
-                      <Calendar size={11} />
-                      <span className="font-anek-label text-[11px]">{item.dates}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-white/40">
-                      <Trophy size={11} />
-                      <span className="font-anek-label text-[11px]">{item.pairs} parejas</span>
+                  <div>
+                    <h3
+                      className="mb-3 font-display leading-tight text-white"
+                      style={{ fontSize: '1.1rem', fontWeight: 700 }}
+                    >
+                      {item.name}
+                    </h3>
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center gap-2 text-white/60">
+                        <MapPin size={11} />
+                        <span className="font-anek-label text-[11px] uppercase tracking-[0.1em]">{item.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-white/60">
+                        <Calendar size={11} />
+                        <span className="font-anek-label text-[11px]">{item.dates}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-white/60">
+                        <Trophy size={11} />
+                        <span className="font-anek-label text-[11px]">{item.pairs} parejas</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-bandeja/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-bandeja/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
             ))}
           </div>

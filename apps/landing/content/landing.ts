@@ -119,10 +119,10 @@ export const landing = {
       },
     ],
     items: [
-      { id: 1, name: 'Madrid Open',         location: 'Madrid',    dates: 'Feb 2025', pairs: 32, format: 'One Day Mixed',  status: 'upcoming' as const },
-      { id: 2, name: 'Valencia Experience', location: 'Valencia',  dates: 'Mar 2025', pairs: 24, format: 'One Day Open',   status: 'upcoming' as const },
-      { id: 3, name: 'Barcelona Classic',   location: 'Barcelona', dates: 'Abr 2025', pairs: 32, format: 'One Day Mixed',  status: 'upcoming' as const },
-      { id: 4, name: 'Bilbao Gourmet',      location: 'Bilbao',    dates: 'May 2025', pairs: 24, format: 'One Day Open',   status: 'upcoming' as const },
+      { id: 1, name: 'Madrid Open',         location: 'Madrid',    dates: 'Feb 2025', pairs: 32, format: 'One Day Mixed', status: 'upcoming' as const, image: 'https://images.unsplash.com/photo-1646649853703-7645147474ba?auto=format&fit=crop&w=800&q=75' },
+      { id: 2, name: 'Valencia Experience', location: 'Valencia',  dates: 'Mar 2025', pairs: 24, format: 'One Day Open',  status: 'upcoming' as const, image: 'https://images.unsplash.com/photo-1657704358775-ed705c7388d2?auto=format&fit=crop&w=800&q=75' },
+      { id: 3, name: 'Barcelona Classic',   location: 'Barcelona', dates: 'Abr 2025', pairs: 32, format: 'One Day Mixed', status: 'upcoming' as const, image: 'https://images.unsplash.com/photo-1646651105426-e8c8ee9badde?auto=format&fit=crop&w=800&q=75' },
+      { id: 4, name: 'Bilbao Gourmet',      location: 'Bilbao',    dates: 'May 2025', pairs: 24, format: 'One Day Open',  status: 'upcoming' as const, image: 'https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?auto=format&fit=crop&w=800&q=75' },
     ],
   },
 
