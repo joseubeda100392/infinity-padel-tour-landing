@@ -13,6 +13,7 @@ export const landing = {
         cta: 'Descubre la Liga',
         href: '/liga',
         accent: 'vibora' as const,
+        image: 'https://images.unsplash.com/photo-1646649853703-7645147474ba?auto=format&fit=crop&w=900&q=80',
       },
       {
         id: 'one-day',
@@ -22,6 +23,7 @@ export const landing = {
         cta: 'Ver los Torneos',
         href: '/infinity-padel-tour',
         accent: 'bandeja' as const,
+        image: 'https://images.unsplash.com/photo-1612534847738-b3af9bc31f0c?auto=format&fit=crop&w=900&q=80',
       },
     ],
   },
@@ -51,20 +53,20 @@ export const landing = {
       {
         icon: 'Trophy',
         title: 'Jornadas semanales',
-        description:
-          'Compite regularmente a lo largo de la temporada con un calendario estructurado y partidos de alto nivel en tu grupo.',
+        description: 'Compite regularmente a lo largo de la temporada con un calendario estructurado y partidos de alto nivel en tu grupo.',
+        image: 'https://images.unsplash.com/photo-1658723826297-fe4d1b1e6600?auto=format&fit=crop&w=700&q=75',
       },
       {
         icon: 'Users',
         title: 'Grupos por nivel',
-        description:
-          'Iniciación · Intermedio · Avanzado · Competición. Juegas siempre contra rivales de tu mismo nivel para que cada partido importe.',
+        description: 'Iniciación · Intermedio · Avanzado · Competición. Juegas siempre contra rivales de tu mismo nivel para que cada partido importe.',
+        image: 'https://images.unsplash.com/photo-1657704358775-ed705c7388d2?auto=format&fit=crop&w=700&q=75',
       },
       {
         icon: 'Star',
         title: 'Experiencia premium',
-        description:
-          'Clubs seleccionados, arbitraje profesional y estadísticas en tiempo real. Esto es una liga de verdad.',
+        description: 'Clubs seleccionados, arbitraje profesional y estadísticas en tiempo real. Esto es una liga de verdad.',
+        image: 'https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?auto=format&fit=crop&w=700&q=75',
       },
     ],
     steps: [
