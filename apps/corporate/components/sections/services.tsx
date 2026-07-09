@@ -1,38 +1,31 @@
 import { Building2, Trophy, Users } from 'lucide-react'
-import { DarkGlowCard } from '@/components/shared/dark-glow-card'
-import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/shared/reveal-on-scroll'
+import { RevealOnScroll } from '@/components/shared/reveal-on-scroll'
 import { corporate } from '@/content/corporate'
 
 const ICON_MAP = { Building2, Trophy, Users } as const
 type IconKey = keyof typeof ICON_MAP
 
-const ACCENT_TEXT: Record<string, string> = {
-  vibora:   'text-vibora',
-  bandeja:  'text-bandeja',
-  chiquita: 'text-chiquita',
-}
-const ACCENT_BORDER: Record<string, string> = {
-  vibora:   'border-vibora/20 hover:border-vibora/40',
-  bandeja:  'border-bandeja/20 hover:border-bandeja/40',
-  chiquita: 'border-chiquita/20 hover:border-chiquita/40',
+const ACCENT_LINE: Record<string, string> = {
+  vibora:   'bg-vibora',
+  bandeja:  'bg-bandeja',
+  chiquita: 'bg-chiquita',
 }
 const ACCENT_ICON: Record<string, string> = {
-  vibora:   'border-vibora/30 bg-vibora/10 text-vibora',
-  bandeja:  'border-bandeja/30 bg-bandeja/10 text-bandeja',
-  chiquita: 'border-chiquita/30 bg-chiquita/10 text-chiquita',
+  vibora:   'border-vibora/40 bg-vibora/10 text-vibora',
+  bandeja:  'border-bandeja/40 bg-bandeja/10 text-bandeja',
+  chiquita: 'border-chiquita/40 bg-chiquita/10 text-chiquita',
 }
 
 export function Services() {
   const { services } = corporate
 
   return (
-    <section className="relative overflow-hidden bg-[#0D1117] py-24 md:py-32">
-      <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-vibora/20 to-transparent" />
+    <section className="relative overflow-hidden bg-[#05080F] py-24 md:py-32">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
       <div className="relative z-10 container mx-auto max-w-6xl px-4 sm:px-6">
 
-        <RevealOnScroll className="mb-16 max-w-3xl">
+        <RevealOnScroll className="mb-14 max-w-3xl">
           <span className="mb-4 block font-label text-[11px] uppercase tracking-[0.3em] text-vibora">
             {services.eyebrow}
           </span>
@@ -44,27 +37,46 @@ export function Services() {
           </h2>
         </RevealOnScroll>
 
-        <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-3" staggerDelay={0.1}>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
           {services.items.map((item) => {
             const Icon = ICON_MAP[item.icon as IconKey] ?? Trophy
             return (
-              <StaggerItem key={item.title}>
-                <DarkGlowCard className={`h-full border bg-white/[0.02] p-8 transition-colors ${ACCENT_BORDER[item.accent]}`}>
-                  <div className={`mb-6 inline-flex h-11 w-11 items-center justify-center border ${ACCENT_ICON[item.accent]}`}>
+              <div
+                key={item.title}
+                className="group relative overflow-hidden"
+                style={{ minHeight: '400px' }}
+              >
+                {/* Photo background */}
+                <img
+                  src={item.image}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[#05080F]/65 transition-opacity duration-300 group-hover:bg-[#05080F]/50" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#05080F]/95 via-[#05080F]/30 to-transparent" />
+
+                {/* Top accent line */}
+                <div className={`absolute inset-x-0 top-0 h-[2px] ${ACCENT_LINE[item.accent]} opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
+
+                {/* Content — pinned to bottom */}
+                <div className="relative z-10 flex h-full flex-col justify-end p-8" style={{ minHeight: '400px' }}>
+                  <div className={`mb-5 inline-flex h-11 w-11 items-center justify-center border ${ACCENT_ICON[item.accent]}`}>
                     <Icon size={20} />
                   </div>
                   <h3
                     className="mb-3 font-display text-white"
-                    style={{ fontSize: '1.2rem', fontWeight: 700 }}
+                    style={{ fontSize: '1.25rem', fontWeight: 700 }}
                   >
                     {item.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/50">{item.description}</p>
-                </DarkGlowCard>
-              </StaggerItem>
+                  <p className="text-sm leading-relaxed text-white/60">{item.description}</p>
+                </div>
+              </div>
             )
           })}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   )

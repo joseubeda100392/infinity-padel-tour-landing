@@ -2,13 +2,6 @@ import { MapPin } from 'lucide-react'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/shared/reveal-on-scroll'
 import { corporate } from '@/content/corporate'
 
-const CATEGORY_COLOR: Record<string, string> = {
-  Empresa: 'border-vibora/30 text-vibora',
-  Premium: 'border-bandeja/30 text-bandeja',
-  Social:  'border-white/20 text-white/50',
-  Privado: 'border-chiquita/30 text-chiquita',
-}
-
 export function Experience() {
   const { experience } = corporate
 
@@ -18,7 +11,7 @@ export function Experience() {
 
       <div className="relative z-10 container mx-auto max-w-6xl px-4 sm:px-6">
 
-        <RevealOnScroll className="mb-16 max-w-3xl">
+        <RevealOnScroll className="mb-14 max-w-3xl">
           <span className="mb-4 block font-label text-[11px] uppercase tracking-[0.3em] text-vibora">
             {experience.eyebrow}
           </span>
@@ -33,43 +26,66 @@ export function Experience() {
           </p>
         </RevealOnScroll>
 
-        <StaggerContainer className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" staggerDelay={0.07}>
+        <StaggerContainer
+          className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+          staggerDelay={0.06}
+        >
           {experience.items.map((item) => (
             <StaggerItem key={item.id}>
               <div
-                className={[
-                  'group relative overflow-hidden p-6 transition-all duration-300',
-                  item.status === 'upcoming'
-                    ? 'event-card-upcoming hover:brightness-110'
-                    : 'event-card-finished opacity-55',
-                ].join(' ')}
+                className="group relative overflow-hidden"
+                style={{ aspectRatio: '3/4' }}
               >
-                {/* Status badge */}
-                <div className="mb-4 flex items-center justify-between">
+                {/* Photo */}
+                <img
+                  src={item.image}
+                  alt=""
+                  aria-hidden="true"
+                  className={[
+                    'absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105',
+                    item.status === 'finished' ? 'grayscale' : '',
+                  ].join(' ')}
+                  loading="lazy"
+                />
+                {/* Overlays */}
+                <div className={[
+                  'absolute inset-0 transition-opacity duration-300',
+                  item.status === 'upcoming'
+                    ? 'bg-[#05080F]/45 group-hover:bg-[#05080F]/30'
+                    : 'bg-[#05080F]/65',
+                ].join(' ')} />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#05080F]/95 via-[#05080F]/10 to-transparent" />
+
+                {/* Top badges */}
+                <div className="absolute left-3 right-3 top-3 z-10 flex items-start justify-between gap-1">
                   <span className={[
-                    'border px-2 py-0.5 font-label text-[9px] uppercase tracking-[0.15em]',
-                    item.status === 'upcoming' ? 'border-vibora/40 text-vibora' : 'border-balance/30 text-balance',
+                    'border px-2 py-0.5 font-label text-[9px] uppercase tracking-[0.12em]',
+                    item.status === 'upcoming'
+                      ? 'border-vibora/50 bg-vibora/10 text-vibora'
+                      : 'border-white/20 bg-black/30 text-white/40',
                   ].join(' ')}>
                     {item.status === 'upcoming' ? 'PRÓXIMAMENTE' : 'REALIZADO'}
                   </span>
-                  <span className={`border px-2 py-0.5 font-label text-[9px] uppercase tracking-[0.1em] ${CATEGORY_COLOR[item.category] ?? 'border-white/20 text-white/40'}`}>
+                  <span className="border border-white/20 bg-black/30 px-2 py-0.5 font-label text-[9px] uppercase tracking-[0.1em] text-white/40">
                     {item.category}
                   </span>
                 </div>
 
-                <h3
-                  className="mb-3 font-display leading-tight text-white"
-                  style={{ fontSize: '0.95rem', fontWeight: 700 }}
-                >
-                  {item.name}
-                </h3>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-white/40">
-                    <MapPin size={11} />
-                    <span className="font-label text-[10px] uppercase tracking-[0.1em]">{item.location}</span>
+                {/* Bottom content */}
+                <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
+                  <h3
+                    className="mb-2 font-display leading-tight text-white"
+                    style={{ fontSize: '0.875rem', fontWeight: 700 }}
+                  >
+                    {item.name}
+                  </h3>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 text-white/50">
+                      <MapPin size={10} />
+                      <span className="font-label text-[10px] uppercase tracking-[0.1em]">{item.location}</span>
+                    </div>
+                    <span className="font-label text-[10px] text-white/35">{item.spots} plazas</span>
                   </div>
-                  <span className="font-label text-[10px] text-white/35">{item.spots} plazas</span>
                 </div>
               </div>
             </StaggerItem>

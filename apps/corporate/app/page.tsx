@@ -1,6 +1,7 @@
 import { Hero } from '@/components/sections/hero'
 import { About } from '@/components/sections/about'
 import { Services } from '@/components/sections/services'
+import { WhyPadel } from '@/components/sections/why-padel'
 import { Experience } from '@/components/sections/experience'
 import { TourHook } from '@/components/sections/tour-hook'
 import { ContactForm } from '@/components/sections/contact-form'
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Hero />
       <About />
       <Services />
+      <WhyPadel />
       <Experience />
       <TourHook />
       <ContactForm />
