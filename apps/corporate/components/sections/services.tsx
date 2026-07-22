@@ -1,8 +1,8 @@
-import { Building2, Trophy, Users } from 'lucide-react'
+import { Building2, Trophy, Users, Globe } from 'lucide-react'
 import { RevealOnScroll } from '@/components/shared/reveal-on-scroll'
 import { corporate } from '@/content/corporate'
 
-const ICON_MAP = { Building2, Trophy, Users } as const
+const ICON_MAP = { Building2, Trophy, Users, Globe } as const
 type IconKey = keyof typeof ICON_MAP
 
 const ACCENT_LINE: Record<string, string> = {
