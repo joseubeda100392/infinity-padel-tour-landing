@@ -530,11 +530,15 @@ footer{
 <script>
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if (window.gsap && !reduced) {
+if (window.gsap) {
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-  /* Reveals genéricos */
+  /* Recalcula posiciones una vez que todo el DOM esté pintado */
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+
+  /* Reveals genéricos: skip si reduce-motion */
   gsap.utils.toArray('.reveal').forEach(el => {
+    if (reduced) { el.style.opacity = 1; el.style.transform = 'none'; return; }
     gsap.to(el, {
       opacity: 1, y: 0, duration: .9, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 86%' }
@@ -544,8 +548,12 @@ if (window.gsap && !reduced) {
   /* ── LA CARRERA: la bola recorre la temporada ── */
   const draw = document.getElementById('routeDraw');
   const len = draw.getTotalLength();
-  draw.style.strokeDasharray = len;
-  draw.style.strokeDashoffset = len;
+
+  /* Solo ocultar la ruta al inicio si hay animación */
+  if (!reduced) {
+    draw.style.strokeDasharray  = len;
+    draw.style.strokeDashoffset = len;
+  }
 
   const stations = [
     { el: document.getElementById('st1'), at: 0.02 },
@@ -553,6 +561,7 @@ if (window.gsap && !reduced) {
     { el: document.getElementById('st3'), at: 0.985 }
   ];
 
+  /* ScrollTrigger siempre activo (scroll-linked = no vestibular) */
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: '#carrera',
@@ -560,32 +569,40 @@ if (window.gsap && !reduced) {
       end: '+=2400',
       scrub: 0.6,
       pin: '.race-pin',
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
       onUpdate: self => {
         stations.forEach(s => s.el.classList.toggle('active', self.progress >= s.at));
       }
     }
   });
 
-  tl.to('#ball', {
-    motionPath: { path: '#routeDraw', align: '#routeDraw', alignOrigin: [0.5, 0.5] },
-    ease: 'none', duration: 1
-  }, 0)
-  .to(draw, { strokeDashoffset: 0, ease: 'none', duration: 1 }, 0);
+  if (!reduced) {
+    tl.to('#ball', {
+      motionPath: { path: '#routeDraw', align: '#routeDraw', alignOrigin: [0.5, 0.5] },
+      ease: 'none', duration: 1
+    }, 0)
+    .to(draw, { strokeDashoffset: 0, ease: 'none', duration: 1 }, 0);
 
-  /* Pequeño pulso de la bola al pasar por cada estación */
-  stations.forEach(s => {
-    ScrollTrigger.create({
-      trigger: '#carrera', start: 'top top', end: '+=2400', scrub: true,
-      onUpdate: self => {
-        if (Math.abs(self.progress - s.at) < 0.01) {
-          gsap.fromTo('#ball circle', {scale:1},{scale:1.35, transformOrigin:'center', yoyo:true, repeat:1, duration:.18});
+    /* Pequeño pulso de la bola al pasar por cada estación */
+    stations.forEach(s => {
+      ScrollTrigger.create({
+        trigger: '#carrera', start: 'top top', end: '+=2400', scrub: true,
+        onUpdate: self => {
+          if (Math.abs(self.progress - s.at) < 0.01) {
+            gsap.fromTo('#ball circle', {scale:1},{scale:1.35, transformOrigin:'center', yoyo:true, repeat:1, duration:.18});
+          }
         }
-      }
+      });
     });
-  });
+  } else {
+    /* Reduce-motion: estaciones visibles, bola al final, sin hint de scroll */
+    stations.forEach(s => s.el.classList.add('active'));
+    const hint = document.querySelector('.race-hint'); if (hint) hint.style.display = 'none';
+  }
 
 } else {
-  /* Sin animación: todo visible y la carrera completada */
+  /* GSAP no cargó (sin red / bloqueado) */
   document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
   document.querySelectorAll('.station').forEach(el => el.classList.add('active'));
   const d = document.getElementById('routeDraw');
