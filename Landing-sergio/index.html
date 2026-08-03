@@ -24,6 +24,7 @@
   --balance:#EFDEC2;
   --bandeja:#FFD48F;
   --chiquita:#FF7300;
+  --chiquita-cta:#C25000; /* chiquita oscurecido a 4.7:1 con blanco — texto de botón/etiqueta con AA real; --chiquita se mantiene intacto en el resto (bola, indicadores, isotipo) */
   --bg:#0A5238;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -77,13 +78,13 @@ h2{font-size:clamp(34px,4.6vw,56px);margin-bottom:22px}
 
 /* ───────── Botones ───────── */
 .btn{
-  display:inline-block;background:var(--chiquita);color:#fff;
+  display:inline-block;background:var(--chiquita-cta);color:#fff;
   font-weight:700;font-size:18px;text-decoration:none;
   padding:16px 34px 18px;border-radius:100px;border:none;cursor:pointer;
   transition:transform .22s ease, box-shadow .22s ease;
-  box-shadow:0 8px 28px rgba(255,115,0,.35);
+  box-shadow:0 8px 28px rgba(194,80,0,.35);
 }
-.btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(255,115,0,.45)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(194,80,0,.45)}
 .btn.secondary{background:transparent;color:var(--vibora);border:2px solid var(--vibora);box-shadow:none}
 .btn.secondary:hover{background:rgba(0,251,159,.1)}
 .btn.wa{background:#25D366;box-shadow:0 8px 28px rgba(37,211,102,.35)}
@@ -281,7 +282,7 @@ h2{font-size:clamp(34px,4.6vw,56px);margin-bottom:22px}
 .cat .tag{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--dormilona);background:var(--vibora);border-radius:100px;padding:4px 12px 5px;margin-bottom:16px}
 .cat:nth-child(2) .tag{background:var(--bandeja)}
-.cat:nth-child(3) .tag{background:var(--chiquita);color:#fff}
+.cat:nth-child(3) .tag{background:var(--chiquita-cta);color:#fff}
 .cat p{font-size:15.5px}
 
 /* ───────── Partners ───────── */
@@ -361,6 +362,7 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
 .foot .links{display:flex;gap:22px;font-size:14.5px;flex-wrap:wrap}
 .foot a{color:var(--balance);text-decoration:none;font-weight:500}
 .foot a:hover{color:var(--vibora)}
+.foot .links span{color:rgba(239,222,194,.72);font-weight:500;cursor:default}
 .foot small{color:rgba(239,222,194,.6);font-size:13px}
 
 /* ───────── CTA sticky móvil ───────── */
@@ -484,7 +486,7 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
     <h2 class="reveal">Una liga pensada como<br>un torneo profesional</h2>
     <p class="lead reveal">Infinity Padel Tour lleva la experiencia del circuito profesional al jugador amateur: jornadas cuidadas al detalle, ambiente de gran evento y una competición por parejas donde cada punto cuenta.</p>
     <div class="stats reveal">
-      <div class="stat"><b>8</b><i></i><span>jugadores por jornada. El ∞ de nuestra marca.</span></div>
+      <div class="stat"><b>8</b><i></i><span>jugadores por equipo. El ∞ de nuestra marca.</span></div>
       <div class="stat"><b>3</b><i></i><span>categorías: masculina, femenina y mixta.</span></div>
       <div class="stat"><b>100</b><i></i><span>equipos. Ni uno más. Plazas limitadas.</span></div>
       <div class="stat"><b>2026</b><i></i><span>Madrid. Primera temporada. Historia desde el día uno.</span></div>
@@ -527,7 +529,7 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
       <div class="exp"><div class="dot"></div><h3>Welcome pack</h3><p>Equipación y material oficial de la liga desde el primer día.</p></div>
       <div class="exp"><div class="dot"></div><h3>Evento de lanzamiento</h3><p>Gran presentación de la temporada en Ciudad de la Raqueta, con todos los equipos como protagonistas.</p></div>
       <div class="exp"><div class="dot"></div><h3>Premios de nivel</h3><p>Premios y experiencias de nuestras marcas colaboradoras para los campeones de cada categoría.</p></div>
-      <div class="exp"><div class="dot"></div><h3>Comunidad</h3><p>Un vestuario de 800 jugadores que comparten tu misma pasión. El pádel se vive en pareja.</p></div>
+      <div class="exp"><div class="dot"></div><h3>Comunidad</h3><p>800 jugadores: 8 por equipo, en 100 equipos. Un mismo vestuario que comparte tu misma pasión.</p></div>
     </div>
     <div style="text-align:center;margin-top:52px" class="reveal">
       <a class="btn" href="#form" data-ev="cta_experiencia">Quiero vivirlo</a>
@@ -672,6 +674,21 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
   </div>
 </section>
 
+<!-- ═════════ FAQ ═════════ -->
+<section id="faq" style="background:var(--dormilona)">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="justify-content:center;display:flex">Preguntas frecuentes</p>
+    <h2 class="reveal" style="text-align:center">Lo que todos preguntan</h2>
+    <div class="faq reveal">
+      <details><summary>¿Cuándo empieza la liga?</summary><p>La primera temporada arranca en 2026 en Madrid. Al solicitar información recibirás el calendario completo en cuanto se publique, con prioridad de inscripción.</p></details>
+      <details><summary>¿Qué nivel necesito para jugar?</summary><p>Hay grupos por niveles dentro de cada categoría, desde intermedio hasta competición. En la llamada informativa te ayudamos a ubicarte para que tus partidos estén siempre igualados.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>La cuota depende de la categoría y de lo que incluye tu pack de jugador (equipación, contenido, evento de lanzamiento…). Te lo contamos sin compromiso cuando nos dejes tus datos.</p></details>
+      <details><summary>¿Puedo apuntarme sin pareja?</summary><p>Sí. Marca "busco pareja" en el formulario y te pondremos en contacto con jugadores de tu nivel y categoría.</p></details>
+      <details><summary>¿Dónde se juega?</summary><p>En clubes seleccionados de Madrid, con un evento de lanzamiento de temporada en Ciudad de la Raqueta. Las sedes exactas se comunican con el calendario.</p></details>
+    </div>
+  </div>
+</section>
+
 <!-- ═════════ URGENCIA ═════════ -->
 <section class="urgencia">
   <div class="wrap">
@@ -734,7 +751,7 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
         <input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content">
         <label class="rgpd">
           <input type="checkbox" id="rgpd" required>
-          <span>He leído y acepto la <a href="#" style="color:var(--vibora)">política de privacidad</a>. Mis datos serán tratados por Infinity Padel Tour para responder a mi solicitud de información. (RGPD)</span>
+          <span>He leído y acepto la <strong style="color:var(--vibora)">política de privacidad</strong>. Mis datos serán tratados por Infinity Padel Tour para responder a mi solicitud de información. (RGPD)</span>
         </label>
         <button class="btn" type="submit" style="width:100%" data-ev="form_submit">Quiero información de la liga</button>
       </form>
@@ -748,21 +765,6 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
   </div>
 </section>
 
-<!-- ═════════ FAQ ═════════ -->
-<section id="faq" style="background:var(--dormilona)">
-  <div class="wrap">
-    <p class="eyebrow reveal" style="justify-content:center;display:flex">Preguntas frecuentes</p>
-    <h2 class="reveal" style="text-align:center">Lo que todos preguntan</h2>
-    <div class="faq reveal">
-      <details><summary>¿Cuándo empieza la liga?</summary><p>La primera temporada arranca en 2026 en Madrid. Al solicitar información recibirás el calendario completo en cuanto se publique, con prioridad de inscripción.</p></details>
-      <details><summary>¿Qué nivel necesito para jugar?</summary><p>Hay grupos por niveles dentro de cada categoría, desde intermedio hasta competición. En la llamada informativa te ayudamos a ubicarte para que tus partidos estén siempre igualados.</p></details>
-      <details><summary>¿Cuánto cuesta?</summary><p>La cuota depende de la categoría y de lo que incluye tu pack de jugador (equipación, contenido, evento de lanzamiento…). Te lo contamos sin compromiso cuando nos dejes tus datos.</p></details>
-      <details><summary>¿Puedo apuntarme sin pareja?</summary><p>Sí. Marca "busco pareja" en el formulario y te pondremos en contacto con jugadores de tu nivel y categoría.</p></details>
-      <details><summary>¿Dónde se juega?</summary><p>En clubes seleccionados de Madrid, con un evento de lanzamiento de temporada en Ciudad de la Raqueta. Las sedes exactas se comunican con el calendario.</p></details>
-    </div>
-  </div>
-</section>
-
 <!-- ═════════ FOOTER ═════════ -->
 <footer>
   <div class="wrap foot">
@@ -771,9 +773,9 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
       <a href="#que-es">La liga</a>
       <a href="#camino">Fases</a>
       <a href="#form">Información</a>
-      <a href="#">Instagram</a>
-      <a href="#">Aviso legal</a>
-      <a href="#">Privacidad</a>
+      <span>Instagram</span>
+      <span>Aviso legal</span>
+      <span>Privacidad</span>
     </div>
     <small>© 2026 Infinity Padel Tour · Madrid</small>
   </div>
