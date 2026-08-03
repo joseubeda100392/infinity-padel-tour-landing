@@ -806,10 +806,14 @@ document.querySelectorAll('[data-ev]').forEach(el=>{
 });
 
 /* ── Reveals: el estado oculto SOLO se aplica vía JS.
-   Sin GSAP o con reduced-motion, la página es 100% visible. ── */
-if (hasGsap && !reduced) {
+   Sin GSAP, la página es 100% visible. Con reduced-motion se salta
+   solo la animación de entrada (fade/slide), no el resto de GSAP:
+   "El camino" es scroll-linked (lo mueve el propio scroll del
+   usuario, no autoplay) y no cuenta como motion vestibular. ── */
+if (hasGsap) {
   gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('.reveal').forEach(el => {
+    if (reduced) { el.style.opacity = 1; el.style.transform = 'none'; return; }
     gsap.fromTo(el, {autoAlpha:0, y:32}, {
       autoAlpha:1, y:0, duration:.9, ease:'power3.out',
       scrollTrigger:{trigger:el, start:'top 88%'}
@@ -943,8 +947,10 @@ function renderRaceMobile(p){
   setHud(p);
 }
 
-/* — Activación según viewport (gsap.matchMedia re-inicializa al rotar/redimensionar) — */
-if (hasGsap && !reduced){
+/* — Activación según viewport (gsap.matchMedia re-inicializa al rotar/redimensionar).
+   Corre siempre que haya GSAP, incluso con reduced-motion: el scroll real del
+   usuario mueve la bola, no es una animación autónoma. — */
+if (hasGsap){
   const mm = gsap.matchMedia();
   mm.add('(min-width: 821px)', () => {
     const st = ScrollTrigger.create({
