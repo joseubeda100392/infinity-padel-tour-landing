@@ -883,9 +883,10 @@ if (hasGsap) {
 }
 
 /* ══════════════════════════════════════════════════
-   Botón magnético (CTA principal del hero) — solo puntero fino con hover real
-════════════════════════════════════════════════════ */
-if (hasGsap && !reduced && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+   Botón magnético (CTA principal del hero) — solo puntero fino con hover real.
+   No depende de reduced-motion: lo mueve el propio cursor del usuario
+   (como un hover), no es una animación autónoma. ════════════════════════════════════════════════════ */
+if (hasGsap && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
   document.querySelectorAll('.magnetic').forEach(btn=>{
     const xTo = gsap.quickTo(btn, 'x', {duration:.35, ease:'power3'});
     const yTo = gsap.quickTo(btn, 'y', {duration:.35, ease:'power3'});
@@ -921,7 +922,6 @@ if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
   function run(){
     nums.forEach(el=>{
       const target = parseInt(el.dataset.count, 10);
-      if (reduced) { el.textContent = target; return; }
       const start = performance.now();
       const dur = 1400;
       (function tick(now){
