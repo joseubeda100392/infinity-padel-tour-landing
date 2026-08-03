@@ -30,17 +30,24 @@ app.post('/api/lead', async (req, res) => {
   // Reenvío a Google Sheets vía Apps Script Web App. Fire-and-forget: un fallo
   // aquí no debe impedir que el lead vea la confirmación (se registra el error
   // para revisión manual, igual que en el resto de landings del estudio).
+  //
+  // redirect:'manual' es obligatorio aquí: Apps Script responde con un 302 a
+  // una URL de script.googleusercontent.com para entregar el resultado, y el
+  // comportamiento estándar de fetch ante un 302 es reintentar como GET sin
+  // cuerpo — perdiendo el payload. El doPost ya se ejecutó (y ya escribió la
+  // fila) al recibir la petición original, así que un 302 aquí ES el éxito.
   try {
     const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 8000)
+    const timeout = setTimeout(() => controller.abort(), 15000)
     const response = await fetch(SHEETS_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nombre, email, telefono, nivel, utm_source, utm_medium, utm_campaign, utm_content }),
+      redirect: 'manual',
       signal: controller.signal
     })
     clearTimeout(timeout)
-    if (!response.ok) {
+    if (response.status !== 302 && !response.ok) {
       console.error('Google Sheets webhook respondió con error HTTP', response.status)
     }
   } catch (err) {
