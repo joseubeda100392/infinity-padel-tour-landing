@@ -978,10 +978,11 @@ if (hasGsap) {
      confianza al llegar, más enérgica que un ease-out plano. */
   CustomEase.create('iptPop', '.34,1.56,.64,1');
 
-  /* Scroll suave tipo inercia — solo si no hay reduced-motion: un desfase
-     entre el input físico y la respuesta visual puede ser justo lo que
-     reduced-motion pide evitar, así que en ese caso el scroll queda nativo. */
-  if (!reduced) {
+  /* Scroll suave tipo inercia — solo en puntero fino (ratón/trackpad) y sin
+     reduced-motion. En táctil el scroll nativo del móvil ya tiene su propio
+     momentum afinado por el sistema operativo; superponerle el de
+     ScrollSmoother compite con él y se nota como lento/raro en vez de fino. */
+  if (!reduced && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
     ScrollSmoother.create({
       wrapper: '#smooth-wrapper',
       content: '#smooth-content',
