@@ -69,6 +69,28 @@ img{max-width:100%;height:auto}
 .topbar nav a{color:var(--balance);text-decoration:none;font-weight:600;font-size:14.5px;transition:color .2s ease}
 .topbar nav a:hover{color:var(--vibora)}
 @media (max-width:900px){.topbar nav{display:none}}
+.topbar-actions{display:flex;align-items:center;gap:14px}
+.menu-toggle{
+  display:none;background:none;border:none;cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;
+}
+.menu-toggle span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:900px){.menu-toggle{display:flex}}
+.mobile-nav{
+  position:fixed;inset:0;z-index:999;background:var(--dormilona);
+  padding:96px 28px 40px;display:flex;flex-direction:column;gap:2px;
+  transform:translateY(-100%);opacity:0;pointer-events:none;
+  transition:transform .32s ease,opacity .32s ease;
+}
+.mobile-nav.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-nav a{
+  color:#fff;text-decoration:none;font-weight:700;font-size:21px;
+  padding:16px 0;border-bottom:1px solid rgba(239,222,194,.16);
+}
+.mobile-nav a.cta{color:var(--vibora)}
 .topbar .cta-mini{
   color:var(--dormilona);background:var(--vibora);border-radius:100px;
   padding:6px 16px 7px;font-weight:700;text-decoration:none;font-size:14px;
@@ -502,8 +524,21 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
     <a href="#categorias">Categorías</a>
     <a href="#faq">FAQ</a>
   </nav>
-  <a class="cta-mini" href="#form">Quiero información</a>
+  <div class="topbar-actions">
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="cta-mini" href="#form">Quiero información</a>
+  </div>
 </div>
+
+<nav id="mobileNav" class="mobile-nav" aria-label="Navegación móvil">
+  <a href="#que-es">La liga</a>
+  <a href="#camino">El camino</a>
+  <a href="#categorias">Categorías</a>
+  <a href="#faq">FAQ</a>
+  <a class="cta" href="#form">Quiero información</a>
+</nav>
 
 <!-- ═════════ HERO ═════════ -->
 <header class="hero">
@@ -878,6 +913,26 @@ if (hasGsap) {
   }
   window.addEventListener('scroll', update, {passive:true});
   update();
+})();
+
+/* ══════════════════════════════════════════════════
+   Menú móvil (hamburguesa)
+════════════════════════════════════════════════════ */
+(function mobileMenu(){
+  const btn = document.querySelector('.menu-toggle');
+  const nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  function closeMenu(){
+    btn.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('open');
+  }
+  btn.addEventListener('click', ()=>{
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    nav.classList.toggle('open', !isOpen);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  window.addEventListener('resize', ()=>{ if (window.innerWidth > 900) closeMenu(); });
 })();
 
 /* ══════════════════════════════════════════════════
