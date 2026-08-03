@@ -119,6 +119,7 @@ h2{font-size:clamp(34px,4.6vw,56px);margin-bottom:22px}
   box-shadow:0 8px 28px rgba(194,80,0,.35);
 }
 .btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(194,80,0,.45)}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
 .btn.secondary{background:transparent;color:var(--vibora);border:2px solid var(--vibora);box-shadow:none}
 .btn.secondary:hover{background:rgba(0,251,159,.1)}
 .btn.wa{background:#25D366;box-shadow:0 8px 28px rgba(37,211,102,.35)}
@@ -392,6 +393,8 @@ h2{font-size:clamp(34px,4.6vw,56px);margin-bottom:22px}
 .rgpd input{margin-top:4px;accent-color:var(--vibora)}
 .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden} /* honeypot */
 .form-ok{display:none;text-align:center;padding:34px 16px}
+.form-error{display:none;color:var(--chiquita);font-size:14px;font-weight:600;margin-top:12px;text-align:center}
+.form-error.show{display:block}
 .form-ok h3{font-size:28px;color:var(--vibora);margin-bottom:12px}
 .form-ok p{margin-bottom:26px}
 
@@ -830,6 +833,7 @@ footer{border-top:1px solid rgba(239,222,194,.25);padding:50px 0 40px;background
           <span>He leído y acepto la <a href="privacidad.html" style="color:var(--vibora)" target="_blank" rel="noopener">política de privacidad</a>. Mis datos serán tratados por Infinity Padel Tour para responder a mi solicitud de información. (RGPD)</span>
         </label>
         <button class="btn" type="submit" style="width:100%" data-ev="form_submit">Quiero información de la liga</button>
+        <p class="form-error" id="formError" role="alert"></p>
       </form>
       <div class="form-ok" id="formOk">
         <h3>¡Recibido! 🎾</h3>
@@ -1243,16 +1247,36 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   if (!this.checkValidity()) { this.reportValidity(); return; }
   const data = Object.fromEntries(new FormData(this).entries());
   delete data.web;
-  console.log('Lead IPT:', data);
-  /* → SUSTITUIR por envío real:
-     fetch('https://formspree.io/f/XXXX', {method:'POST', headers:{'Accept':'application/json'}, body:new FormData(this)})
-  */
-  track('form_success', {nivel:data.nivel});
-  this.style.display='none';
-  document.getElementById('formOk').style.display='block';
-  /* WhatsApp con mensaje precargado: el lead invita a su pareja */
-  const msg = encodeURIComponent(`🎾 ¿Nos apuntamos juntos a Infinity Padel Tour? Es la nueva liga premium de pádel de Madrid: producción profesional, foto y vídeo de cada jornada... Solo 100 equipos. Mira: ${URL_PUBLICA}`);
-  document.getElementById('waShare').href = `https://wa.me/?text=${msg}`;
+
+  const form = this;
+  const btn = form.querySelector('button[type="submit"]');
+  const errorEl = document.getElementById('formError');
+  const originalLabel = btn.textContent;
+  errorEl.classList.remove('show');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  fetch('/api/lead', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  })
+    .then(res => res.json())
+    .then(result => {
+      if (!result.success) throw new Error(result.error || 'No se pudo enviar');
+      track('form_success', {nivel:data.nivel});
+      form.style.display='none';
+      document.getElementById('formOk').style.display='block';
+      /* WhatsApp con mensaje precargado: el lead invita a su pareja */
+      const msg = encodeURIComponent(`🎾 ¿Nos apuntamos juntos a Infinity Padel Tour? Es la nueva liga premium de pádel de Madrid: producción profesional, foto y vídeo de cada jornada... Solo 100 equipos. Mira: ${URL_PUBLICA}`);
+      document.getElementById('waShare').href = `https://wa.me/?text=${msg}`;
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      errorEl.textContent = 'No se pudo enviar tu solicitud. Inténtalo de nuevo en unos segundos.';
+      errorEl.classList.add('show');
+    });
 });
 </script>
 </body>
