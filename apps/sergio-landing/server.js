@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000
 const SHEETS_WEBHOOK_URL = process.env.SHEETS_WEBHOOK_URL
 
 app.use(express.json())
-app.use(express.static(__dirname))
+app.use(express.static(__dirname, { extensions: ['html'] }))
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
